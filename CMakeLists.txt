@@ -7,13 +7,14 @@ find_package(Vulkan REQUIRED)
 
 add_subdirectory("libs/glfw/")
 
+set(SRC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(GLM_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/libs/glm")
 set(GLFW_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/libs/glfw/include")
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} "${SRC}/main.cpp" "${SRC}/drawer.cpp")
 
-target_include_directories(        
-    VisualData   
+target_include_directories(
+    ${PROJECT_NAME}
     PUBLIC 
     ${GLM_HEADERS}
     ${GLFW_HEADERS}
