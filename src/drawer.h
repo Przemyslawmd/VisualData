@@ -6,6 +6,14 @@
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
 
+
+#ifdef NDEBUG
+    const bool enableValidationLayers = false;
+ #else
+    const bool enableValidationLayers = true;
+#endif
+
+
 class Drawer
 {
 public:
@@ -16,6 +24,8 @@ private:
     void initWindow();
     void mainLoop();
     void clean();
+
+    bool initValidation();
 
     GLFWwindow* window;
     VkInstance instance;
